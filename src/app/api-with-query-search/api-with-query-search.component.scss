@@ -1,0 +1,23 @@
+.main-container {
+    height: calc(100% - 136px);
+
+    .title {
+        text-align: center;
+        font: 500 20px Roboto;
+        padding-bottom: 50px;
+    }
+
+    .filter-input {
+        width: 100%;
+    }
+
+    .table-container {
+        height: calc(100% - 171px);
+        padding: 10px;
+        overflow: auto;
+
+        .university-table {
+            width: 100%;
+        }
+    }
+}

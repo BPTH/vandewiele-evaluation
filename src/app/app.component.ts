@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
 
   // General variables
   state: number = 1;
+
   constructor() {
 
   }

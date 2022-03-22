@@ -74,12 +74,6 @@ export class ApiWithQuerySearchComponent implements OnInit, AfterViewInit {
     }
   }
 
-  onFilterKeyUp() {
-    if (this.searchInput === '') {
-      this.applyFilter();
-    }
-  }
-
   // API Functions
   getUniversities(query: string): Promise<any> {
     return new Promise((resolve, reject) => {

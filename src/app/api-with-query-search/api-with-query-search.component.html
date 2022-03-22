@@ -6,7 +6,7 @@
   <div class="filter-container">
     <mat-form-field appearance="outline" class="filter-input">
       <mat-label>Filter</mat-label>
-      <input matInput (keyup)="onFilterKeyUp()" [(ngModel)]="searchInput" #input>
+      <input matInput [(ngModel)]="searchInput" #input>
     </mat-form-field>
 
     <button mat-raised-button (click)="applyFilter()" color="primary">Search</button>

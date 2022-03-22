@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataService } from '../services/data.service';
-import { UniversityData } from '../data/universityData';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
@@ -29,10 +28,6 @@ export class ApiWithQuerySearchComponent implements OnInit, AfterViewInit {
   isLoading: boolean = true;
   searchInput: string = '';
 
-  // Dummy Data
-  universityData = UniversityData;
-
-
   constructor(
     private dataService: DataService
   ) {
@@ -40,7 +35,6 @@ export class ApiWithQuerySearchComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    // this.universityDataSource = new MatTableDataSource(this.universityData);
     this.initUniversities();
   }
 

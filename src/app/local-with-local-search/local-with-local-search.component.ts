@@ -27,7 +27,6 @@ export class LocalWithLocalSearchComponent implements OnInit, AfterViewInit {
   // Dummy Data
   universityData = UniversityData;
 
-
   constructor(
     private dataService: DataService
   ) {

@@ -21,11 +21,11 @@ export class ApiWithLocalSearchComponent implements OnInit, AfterViewInit {
   }
 
   // Table variables
-  displayedColumns: string[] = ['country', 'name', 'state-province'];
+  displayedColumns: string[] = ['no', 'country', 'name', 'web-pages'];
   universityDataSource: MatTableDataSource<any>;
 
   // Utility variables
-
+  isLoading: boolean = true;
 
   constructor(
     private dataService: DataService
@@ -44,9 +44,16 @@ export class ApiWithLocalSearchComponent implements OnInit, AfterViewInit {
 
   // Init Functions
   async initUniversities() {
+    this.isLoading = true;
+
     await this.getUniversities(this.universityQuery.country).then(data => {
+      this.isLoading = false;
       this.universityDataSource = new MatTableDataSource(data);
+
+      this.universityDataSource.paginator = this.paginator;
+      this.universityDataSource.sort = this.sort;
     }).catch(err => {
+      this.isLoading = false;
       console.log(err);
     });
   }
@@ -69,7 +76,7 @@ export class ApiWithLocalSearchComponent implements OnInit, AfterViewInit {
           resolve(response);
         }, err => {
           reject(err);
-        })
-    })
+        });
+    });
   }
 }

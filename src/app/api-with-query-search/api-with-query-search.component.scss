@@ -7,17 +7,38 @@
         padding-bottom: 50px;
     }
 
+    .description {
+        text-align: center;
+        padding-bottom: 50px;
+    }
+
     .filter-input {
-        width: 100%;
+        width: calc(100% - 20px);
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .table-container {
-        height: calc(100% - 171px);
+        height: calc(100% - 298px);
         padding: 10px;
         overflow: auto;
 
         .university-table {
             width: 100%;
+            min-width: 700px;
         }
+    }
+}
+
+.spinner-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    z-index: 100;
+
+    mat-spinner {
+        margin: auto;
     }
 }

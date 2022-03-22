@@ -1,7 +1,7 @@
 <div class="button-container">
-  <button mat-stroked-button (click)="changeState(1)">API with Local Search</button>
-  <button mat-stroked-button (click)="changeState(2)">API with Query Search</button>
-  <button mat-stroked-button (click)="changeState(3)">Local Data with Local Search</button>
+  <button mat-stroked-button (click)="changeState(1)" color="primary">API with Local Search</button>
+  <button mat-stroked-button (click)="changeState(2)" color="primary">API with Query Search</button>
+  <button mat-stroked-button (click)="changeState(3)" color="primary">Local Data with Local Search</button>
 </div>
 
 <app-api-with-local-search *ngIf="state === 1"></app-api-with-local-search>

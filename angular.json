@@ -72,7 +72,8 @@
               "browserTarget": "vandewiele-evaluation:build:production"
             },
             "development": {
-              "browserTarget": "vandewiele-evaluation:build:development"
+              "browserTarget": "vandewiele-evaluation:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

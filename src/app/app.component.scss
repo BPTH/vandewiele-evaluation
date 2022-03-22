@@ -4,3 +4,15 @@
     padding-top: 50px;
     padding-bottom: 50px;
 }
+
+// Small Screen
+@media (max-width: 700px) {
+    
+    .button-container {
+        display: grid;
+        
+        button {
+            margin-bottom: 10px;
+        }
+    }
+}

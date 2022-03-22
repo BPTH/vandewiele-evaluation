@@ -1,6 +1,7 @@
 <div class="main-container">
 
   <div class="title">Dummy Data from API with Postman and searching from front end</div>
+  <div class="description">Data from same API but from Postman, dump in a typescript file, import to this component and used it locally</div>
 
   <mat-form-field appearance="outline" class="filter-input">
     <mat-label>Filter</mat-label>
@@ -9,6 +10,12 @@
 
   <div class="table-container">
     <table class="university-table" mat-table [dataSource]="universityDataSource" matSort>
+      
+      <!-- Number Column -->
+      <ng-container matColumnDef="no">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+        <td mat-cell *matCellDef="let university; let i = index;"> {{i + 1}} </td>
+      </ng-container>
 
       <!-- Country Column -->
       <ng-container matColumnDef="country">
@@ -22,10 +29,13 @@
         <td mat-cell *matCellDef="let university"> {{university.name || 'N/A'}} </td>
       </ng-container>
 
-      <!-- State Province Column -->
-      <ng-container matColumnDef="state-province">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> State Province </th>
-        <td mat-cell *matCellDef="let university"> {{university.state_province || 'N/A'}} </td>
+      <!-- Web Pages Column -->
+      <ng-container matColumnDef="web-pages">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Web Pages </th>
+        <td mat-cell *matCellDef="let university; let i = index;">
+          <div *ngIf="university.web_pages.length < 1">N/A</div>
+          <a [href]="university.web_pages[0]" *ngIf="university.web_pages.length > 0">{{university.web_pages[0] || 'N/A'}}</a>
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -36,8 +46,7 @@
         <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
       </tr>
     </table>
-
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
 
+  <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
 </div>

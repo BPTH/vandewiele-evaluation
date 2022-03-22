@@ -22,10 +22,11 @@ export class ApiWithQuerySearchComponent implements OnInit, AfterViewInit {
   }
 
   // Table variables
-  displayedColumns: string[] = ['country', 'name', 'state-province'];
+  displayedColumns: string[] = ['no', 'country', 'name', 'web-pages'];
   universityDataSource: MatTableDataSource<any>;
 
   // Utility variables
+  isLoading: boolean = true;
   searchInput: string = '';
 
   // Dummy Data
@@ -50,16 +51,27 @@ export class ApiWithQuerySearchComponent implements OnInit, AfterViewInit {
 
   // Init Functions
   async initUniversities() {
+    this.isLoading = true;
+
     await this.getUniversities(this.universityQuery.country + this.universityQuery.name).then(data => {
+      this.isLoading = false;
       this.universityDataSource = new MatTableDataSource(data);
+
+      this.universityDataSource.paginator = this.paginator;
+      this.universityDataSource.sort = this.sort;
     }).catch(err => {
+      this.isLoading = true;
       console.log(err);
     });
   }
 
   // Utility Functions
   async applyFilter(event: Event) {
-    this.universityQuery.name = `&name=${this.searchInput.trim().toLowerCase()}`;
+    if (this.searchInput !== '') {
+      this.universityQuery.name = `&name=${this.searchInput.trim().toLowerCase()}`;
+    } else {
+      this.universityQuery.name = '';
+    }
 
     await this.initUniversities();
 
@@ -76,7 +88,7 @@ export class ApiWithQuerySearchComponent implements OnInit, AfterViewInit {
           resolve(response);
         }, err => {
           reject(err);
-        })
-    })
+        });
+    });
   }
 }

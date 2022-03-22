@@ -21,10 +21,8 @@ export class LocalWithLocalSearchComponent implements OnInit, AfterViewInit {
   }
 
   // Table variables
-  displayedColumns: string[] = ['country', 'name', 'state-province'];
+  displayedColumns: string[] = ['no', 'country', 'name', 'web-pages'];
   universityDataSource: MatTableDataSource<any>;
-
-  // Utility variables
 
   // Dummy Data
   universityData = UniversityData;
@@ -45,15 +43,6 @@ export class LocalWithLocalSearchComponent implements OnInit, AfterViewInit {
     this.universityDataSource.sort = this.sort;
   }
 
-  // Init Functions
-  async initUniversities() {
-    await this.getUniversities(this.universityQuery.country).then(data => {
-      this.universityDataSource = new MatTableDataSource(data);
-    }).catch(err => {
-      console.log(err);
-    });
-  }
-
   // Utility Functions
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -62,17 +51,5 @@ export class LocalWithLocalSearchComponent implements OnInit, AfterViewInit {
     if (this.universityDataSource.paginator) {
       this.universityDataSource.paginator.firstPage();
     }
-  }
-
-  // API Functions
-  getUniversities(query: string): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.dataService.getUniversities(query)
-        .subscribe(response => {
-          resolve(response);
-        }, err => {
-          reject(err);
-        })
-    })
   }
 }

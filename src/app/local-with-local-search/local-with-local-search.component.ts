@@ -16,9 +16,6 @@ export class LocalWithLocalSearchComponent implements OnInit, AfterViewInit {
 
   // General variables
   universities = [] as any;
-  universityQuery = {
-    country: '?country=United+States'
-  }
 
   // Table variables
   displayedColumns: string[] = ['no', 'country', 'name', 'web-pages'];
@@ -35,6 +32,8 @@ export class LocalWithLocalSearchComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.universityDataSource = new MatTableDataSource(this.universityData);
+    this.universityDataSource.paginator = this.paginator;
+    this.universityDataSource.sort = this.sort;
   }
 
   ngAfterViewInit() {

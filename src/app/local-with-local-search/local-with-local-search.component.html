@@ -9,12 +9,12 @@
   </mat-form-field>
 
   <div class="table-container">
-    <table class="university-table" mat-table [dataSource]="universityDataSource" matSort>
+    <table class="university-table" mat-table [dataSource]="universityDataSource" matSort *ngIf="universityData.length > 0 && paginator">
       
       <!-- Number Column -->
       <ng-container matColumnDef="no">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-        <td mat-cell *matCellDef="let university; let i = index;"> {{i + 1}} </td>
+        <td mat-cell *matCellDef="let university; let i = index;"> {{paginator.pageIndex == 0 ? i + 1 : 1 + i + paginator.pageIndex * paginator.pageSize}} </td>
       </ng-container>
 
       <!-- Country Column -->
@@ -48,5 +48,5 @@
     </table>
   </div>
 
-  <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
 </div>

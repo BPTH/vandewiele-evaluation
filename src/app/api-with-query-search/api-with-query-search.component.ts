@@ -60,7 +60,7 @@ export class ApiWithQuerySearchComponent implements OnInit, AfterViewInit {
   }
 
   // Utility Functions
-  async applyFilter(event: Event) {
+  async applyFilter() {
     if (this.searchInput !== '') {
       this.universityQuery.name = `&name=${this.searchInput.trim().toLowerCase()}`;
     } else {
@@ -71,6 +71,12 @@ export class ApiWithQuerySearchComponent implements OnInit, AfterViewInit {
 
     if (this.universityDataSource.paginator) {
       this.universityDataSource.paginator.firstPage();
+    }
+  }
+
+  onFilterKeyUp() {
+    if (this.searchInput === '') {
+      this.applyFilter();
     }
   }
 

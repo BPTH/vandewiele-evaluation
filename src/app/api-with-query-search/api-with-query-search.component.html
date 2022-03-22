@@ -3,10 +3,15 @@
   <div class="title">Call API from server and querying name from backend</div>
   <div class="description">http://universities.hipolabs.com/search{{ universityQuery.country }}{{ universityQuery.name }}</div>
 
-  <mat-form-field appearance="outline" class="filter-input">
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" [(ngModel)]="searchInput" #input>
-  </mat-form-field>
+  <div class="filter-container">
+    <mat-form-field appearance="outline" class="filter-input">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="onFilterKeyUp()" [(ngModel)]="searchInput" #input>
+    </mat-form-field>
+
+    <button mat-raised-button (click)="applyFilter()" color="primary">Search</button>
+  </div>
+  
 
   <div class="table-container">
     <table class="university-table" mat-table [dataSource]="universityDataSource" matSort>
@@ -48,7 +53,7 @@
     </table>
   </div>
 
-  <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[10, 25, 100]" showFirstLastButtons></mat-paginator>
 </div>
 
 <div class="spinner-container" [ngStyle]="{'display': isLoading ? 'flex' : 'none'}">

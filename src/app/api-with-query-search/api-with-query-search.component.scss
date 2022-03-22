@@ -4,7 +4,6 @@
     .title {
         text-align: center;
         font: 500 20px Roboto;
-        padding-bottom: 50px;
     }
 
     .description {
@@ -12,14 +11,25 @@
         padding-bottom: 50px;
     }
 
-    .filter-input {
+    .filter-container {
         width: calc(100% - 20px);
-        margin-left: 10px;
-        margin-right: 10px;
+        display: flex;
+
+        .filter-input {
+            width: 90%;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        button {
+            height: 55px;
+            width: 10%;
+        }
     }
+    
 
     .table-container {
-        height: calc(100% - 298px);
+        height: calc(100% - 247px);
         padding: 10px;
         overflow: auto;
 
